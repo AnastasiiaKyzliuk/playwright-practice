@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { GaragePage } from '../pageObjects/GaragePage.ts';
 import { MainPage } from '../pageObjects/MainPage.ts';
 import { nameExist, nameLengthMsgText, nameInvalid, lastNameExist, lasNameInvalid, emailIncorrect, passwordReq, rePassMismatch} from '../data/validationMsg.ts';
-import { correctEmail, correctPassword } from '../data/generateUserData.js';
+import { correctEmail, correctPassword, registeredEmail, registeredPassword} from '../data/generateUserData.js';
 
 let mainPage: MainPage;
 let garagePage: GaragePage;
@@ -27,9 +27,9 @@ test.describe('Verify registration with valid credentials', () => {
   test('Verify error is shown for duplicate user registration', async ({ page }) => {
     await mainPage.nameField.fill('Anastasiia');
     await mainPage.lastNameField.fill('Kyzliuk');
-    await mainPage.emailField.fill(correctEmail);
-    await mainPage.passwordField.fill(correctPassword);
-    await mainPage.repasswordField.fill(correctPassword);
+    await mainPage.emailField.fill(registeredEmail);
+    await mainPage.passwordField.fill(registeredPassword);
+    await mainPage.repasswordField.fill(registeredPassword);
     await mainPage.clickRegisterButton();
     await expect(mainPage.alertMessage).toHaveText(nameExist);
   });
@@ -131,8 +131,8 @@ test.describe('Verify the "Password" field validation', () => {
 
 test.describe('Verify the "Re-enter password" field validation', () => {
   test('Verify the "Re-enter password" matching validation', async ({ page }) => {
-    await mainPage.passwordField.fill('Lorem ipsum dolo');
-    await mainPage.repasswordField.fill('Lorem ipsum dolr');
+    await mainPage.passwordField.fill('Lorem15862Dasd');
+    await mainPage.repasswordField.fill('Lorem15862DasdA');
     await mainPage.repasswordField.press('Tab');
     await expect(mainPage.repasswordField).toHaveAttribute('class', /is-invalid/);
     await expect(mainPage.Msg).toHaveText(rePassMismatch);
