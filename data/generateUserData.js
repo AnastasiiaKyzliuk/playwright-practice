@@ -1,5 +1,4 @@
-
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 function generateRandomEmail() {
     const emailPrefix = 'torchovanastia+10';
@@ -20,3 +19,5 @@ function generateRandomPassword() {
 export const correctEmail = generateRandomEmail();
 export const correctPassword = generateRandomPassword();
 export const incorrectPassword = 'wrongPassword';
+export const registeredEmail = 'torchovanastia+111@gmail.com'
+export const registeredPassword = 'Passwrd123'
