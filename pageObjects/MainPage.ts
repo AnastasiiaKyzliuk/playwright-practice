@@ -18,11 +18,11 @@ export class MainPage {
     readonly passwordIsRequired: Locator
     readonly rePasswordIsRequired: Locator
     readonly Msg : Locator;
-
+    readonly guestSignIn: Locator
 
     constructor(page: Page) {
         this.page = page;
-        this.signUpButton = page.getByText('Sign up', { exact: true });
+        this.signUpButton = page.getByText('Sign up' , { exact: true });
         this.nameField = page.locator('#signupName');
         this.lastNameField = page.locator('#signupLastName');
         this.emailField = page.locator('#signupEmail');
@@ -37,10 +37,9 @@ export class MainPage {
         this.passwordIsRequired = page.getByText('Password required');
         this.rePasswordIsRequired = page.getByText('Re-enter password required');
         this.Msg = page.locator('div[class="invalid-feedback"] >p');
-
-
-
+        this.guestSignIn = page.getByText('Guest log in')
     }   
+
     async clickSignUpButton() {
         await this.signUpButton.click();
     }
@@ -49,4 +48,7 @@ export class MainPage {
         await this.registerButton.click();
     }
 
+    async signInAsGuest() {
+        await this.guestSignIn.click()
+    }
 }
