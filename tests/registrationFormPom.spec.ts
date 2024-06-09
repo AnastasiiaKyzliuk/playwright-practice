@@ -3,13 +3,15 @@ import { GaragePage } from '../pageObjects/GaragePage.ts';
 import { MainPage } from '../pageObjects/MainPage.ts';
 import { nameExist, nameLengthMsgText, nameInvalid, lastNameExist, lasNameInvalid, emailIncorrect, passwordReq, rePassMismatch} from '../data/validationMsg.ts';
 import { correctEmail, correctPassword, registeredEmail, registeredPassword} from '../data/generateUserData.js';
+import 'dotenv/config'
+
 
 let mainPage: MainPage;
 let garagePage: GaragePage;
 
 test.beforeEach(async ({ page }) => {
   mainPage = new MainPage(page);
-  await page.goto('/');
+  await page.goto('/')
   await mainPage.clickSignUpButton();
 });
 

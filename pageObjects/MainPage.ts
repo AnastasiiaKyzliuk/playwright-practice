@@ -22,7 +22,7 @@ export class MainPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.signUpButton = page.getByText('Sign up' , { exact: true });
+        this.signUpButton = page.getByText('Sign up', { exact: true });
         this.nameField = page.locator('#signupName');
         this.lastNameField = page.locator('#signupLastName');
         this.emailField = page.locator('#signupEmail');
